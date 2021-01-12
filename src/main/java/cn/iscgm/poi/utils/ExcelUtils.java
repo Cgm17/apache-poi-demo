@@ -25,7 +25,7 @@ public class ExcelUtils {
      * @param cellContent
      * @return 行号集合
      */
-    private static List<Integer> findRowNum(XSSFSheet sheet, String cellContent) {
+    public static List<Integer> findRowNum(XSSFSheet sheet, String cellContent) {
         List<Integer> list = new ArrayList<>();
         for (Row row : sheet) {
             for (Cell cell : row) {
@@ -52,7 +52,7 @@ public class ExcelUtils {
      * @throws EncryptedDocumentException
      * @throws IOException
      */
-    private static String getStringCellContent(FileInputStream fis, int
+    public static String getStringCellContent(FileInputStream fis, int
             sheetNum, String fileName, Integer rowNum, Integer cellNum) throws EncryptedDocumentException, IOException {
         DataFormatter formatter = new DataFormatter();
         String cellContent;
@@ -87,7 +87,7 @@ public class ExcelUtils {
      * @return Map<String, PictureData> key:行号-列号 value:PictureData
      * @throws EncryptedDocumentException
      */
-    private static Map<String, PictureData> getPicture(FileInputStream fis, int
+    public static Map<String, PictureData> getPicture(FileInputStream fis, int
             sheetNum, String fileName) throws EncryptedDocumentException, IOException {
         Map<String, PictureData> map = new HashMap<>();
         if (fileName.endsWith(".xlsx")) {
@@ -145,7 +145,7 @@ public class ExcelUtils {
      * @param cellNum 单元格（列）号
      * @return rowNum 行号；如果返回-1则代表未找到
      */
-    private static Integer findNullRow(XSSFSheet sheet, Integer cellNum) {
+    public static Integer findNullRow(XSSFSheet sheet, Integer cellNum) {
         Integer rowNum = -1;
         for (Row row : sheet) {
             Cell cell = row.getCell(cellNum);
@@ -166,7 +166,7 @@ public class ExcelUtils {
      * @param cellContent 指定单元格内容
      * @return 行号集合
      */
-    private static List<Integer> findNullRows(XSSFSheet sheet, Integer cellNum, String cellContent) {
+    public static List<Integer> findNullRows(XSSFSheet sheet, Integer cellNum, String cellContent) {
         List<Integer> list = new ArrayList<>();
         List<Integer> rowNums = findRowNum(sheet, cellContent);
         for (Integer rowNum : rowNums
